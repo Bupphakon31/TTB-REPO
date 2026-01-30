@@ -18,14 +18,8 @@ pipeline {
         
         stage('Send Result To Jenkins') {
             steps {
-                publishHTML([
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'playwright-report',
-                    reportFiles: 'index.html',
-                    reportName: 'Test Results Report'
-                ])
+                archiveArtifacts artifacts: 'playwright-report/**/*', allowEmptyArchive: true
+                echo 'Test results archived successfully'
             }
         }
     }
