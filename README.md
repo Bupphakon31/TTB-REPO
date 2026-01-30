@@ -118,7 +118,23 @@ Testing against reqres.in API:
 
 ## CI/CD
 
+### GitHub Actions
 Tests run automatically on push/PR to `main` or `master` branches via GitHub Actions.
+
+### Jenkins Pipeline
+Alternatively, use Jenkins for CI/CD with the provided `Jenkinsfile`:
+
+**Prerequisites:**
+- Jenkins with NodeJS plugin
+- HTML Publisher plugin
+- Email Extension plugin
+
+**Pipeline Features:**
+- Parallel test execution
+- Code quality checks
+- HTML report publishing
+- Email notifications on failure
+- Artifact archiving
 
 ## Reports
 
