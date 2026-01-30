@@ -1,0 +1,35 @@
+{
+    "name": "playwright",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "playwright:api": "npx playwright test --grep @api",
+        "playwright:regression": "npx playwright test --grep @regression",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "prepare": "husky"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "devDependencies": {
+        "@playwright/test": "^1.57.0",
+        "@types/node": "^25.0.5",
+        "cross-env": "^10.1.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.7",
+        "prettier": "^3.7.4"
+    },
+    "dependencies": {
+        "dotenv": "^17.2.3",
+        "zod": "^4.3.5"
+    },
+    "lint-staged": {
+        "*.{js,ts,json,md}": [
+            "prettier --write",
+            "git add"
+        ]
+    }
+}
