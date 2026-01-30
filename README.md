@@ -1,6 +1,6 @@
 # Playwright API Testing
 
-API testing framework using Playwright for automated testing.
+API testing framework using Playwright for automated testing with reqres.in API.
 
 ## Prerequisites
 
@@ -36,9 +36,8 @@ npx playwright install --with-deps
 Environment variables are stored in `configs/.env`:
 
 ```env
-ENV_URL=https://api.escuelajs.co
-V1_USER=/api/v1/users
-V1_USER_ID=/api/v1/users/{{:userId}}
+ENV_URL=https://reqres.in
+V1_USER=/api/users
 ```
 
 ## Running Tests
@@ -46,7 +45,7 @@ V1_USER_ID=/api/v1/users/{{:userId}}
 ### All Tests
 
 ```bash
-npm test
+npm run playwright:all
 ```
 
 ### API Tests
@@ -61,26 +60,14 @@ npm run playwright:api
 npm run playwright:regression
 ```
 
-### Functional Tests
-
-```bash
-npm run playwright:functional
-```
-
-### E2E Tests
-
-```bash
-npm run playwright:E2E
-```
-
 ### Custom Workers
 
 ```bash
 # Windows
-set WORKERS=4 && npm run playwright:api
+set WORKERS=4 && npm run playwright:regression
 
 # Unix/Linux/Mac
-WORKERS=4 npm run playwright:api
+WORKERS=4 npm run playwright:regression
 ```
 
 ## Code Formatting
@@ -108,21 +95,26 @@ playwright-api/
 │   ├── dataTest/
 │   └── expectedResults/
 ├── support/              # Support utilities
-│   ├── models/
 │   ├── services/
 │   └── utils/
 ├── testCases/            # Test cases
 │   └── api/
+│       └── getUser/
 ├── playwright.config.ts  # Playwright configuration
 └── globalVariables.ts    # Global variables
 ```
 
 ## Test Tags
 
-- `@high` - High priority tests
+- `@api` - API tests
+- `@medium` - Medium priority tests
 - `@regression` - Regression tests
-- `@functional` - Functional tests
-- `@E2E` - End-to-end tests
+
+## API Endpoints
+
+Testing against reqres.in API:
+- `GET /api/users/{id}` - Get user by ID
+- Base URL: `https://reqres.in`
 
 ## CI/CD
 
