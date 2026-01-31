@@ -9,7 +9,7 @@ export default defineConfig({
     reporter: "html",
     use: {
         trace: "on",
-        headless: false,
+        headless: !!process.env.CI,
         testIdAttribute: "id",
     },
 
