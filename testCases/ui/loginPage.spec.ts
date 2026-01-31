@@ -3,7 +3,7 @@ import { ENV } from "globalVariables";
 import { LoginPage } from "@support/pageObjects/loginPage";
 import { onFileExtensionUtil } from "@support/utils/fileExtensionUtil";
 
-test.describe.only("Login Page", () => {
+test.describe("Login Page", () => {
     let onLoginPage: LoginPage;
     let dataTest: Record<string, any> = {};
     let expectedResult: Record<string, any> = {};
