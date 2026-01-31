@@ -4,9 +4,11 @@ on:
         branches: [main, master]
     pull_request:
         branches: [main, master]
+    schedule:
+        - cron: '0 */6 * * *'  # Run every 6 hours
 jobs:
-    test:
-        timeout-minutes: 60
+    api-tests:
+        timeout-minutes: 30
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -17,11 +19,34 @@ jobs:
               run: npm ci
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps
-            - name: Run Playwright tests
-              run: npx playwright test
+            - name: Run API Tests
+              run: npm run playwright:api
+            - name: Run Regression Tests
+              run: npm run playwright:regression
             - uses: actions/upload-artifact@v4
               if: ${{ !cancelled() }}
               with:
-                  name: playwright-report
+                  name: api-test-report
+                  path: playwright-report/
+                  retention-days: 30
+    
+    ui-tests:
+        timeout-minutes: 45
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+            - name: Install dependencies
+              run: npm ci
+            - name: Install Playwright Browsers
+              run: npx playwright install --with-deps
+            - name: Run UI Tests
+              run: npm run playwright:ui
+            - uses: actions/upload-artifact@v4
+              if: ${{ !cancelled() }}
+              with:
+                  name: ui-test-report
                   path: playwright-report/
                   retention-days: 30

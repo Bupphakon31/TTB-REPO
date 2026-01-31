@@ -1,0 +1,22 @@
+{
+    "loginPage": {
+        "loginHeader": "Login Page",
+        "usernameLabel": "Username",
+        "passwordLabel": "Password",
+        "loginButton": "Login"
+    },
+    "loginPageSuccess": {
+        "successMessage": "You logged into a secure area!",
+        "loginHeaderSuccess": "Secure Area",
+        "loginDescriptionSuccess": "Welcome to the Secure Area. When you are done click logout below.",
+        "logoutButton": "Logout"
+    },
+    "logoutSuccess": {
+        "successMessage": "You logged out of the secure area!"
+    },
+    "loginFailed": {
+        "errorPasswordMessage": "Your password is invalid!",
+        "errorUsernameNotFoundMessage": "Your username is invalid!"
+    },
+    "loginDescription": "This is where you can log into the secure area. Enter tomsmith for the username and SuperSecretPassword! for the password. If the information is wrong you should see error messages."
+}
