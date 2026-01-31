@@ -1,4 +1,4 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
     testDir: "./testCases",
@@ -8,13 +8,27 @@ export default defineConfig({
     workers: process.env.CI ? 2 : undefined,
     reporter: "html",
     use: {
-        trace: "on-first-retry",
+        trace: "on",
         headless: false,
+        testIdAttribute: "id",
     },
 
     projects: [
         {
             name: "default",
+        },
+        {
+            name: "chromium",
+            use: { ...devices["Desktop Chrome"] },
+        },
+        {
+            name: "firefox",
+            use: { ...devices["Desktop Firefox"] },
+        },
+
+        {
+            name: "webkit",
+            use: { ...devices["Desktop Safari"] },
         },
     ],
 });

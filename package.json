@@ -5,8 +5,11 @@
     "main": "index.js",
     "scripts": {
         "playwright:all": "npx playwright test",
-        "playwright:api": "npx playwright test --grep @api",
+        "playwright:duplicates": "npx playwright test --grep @duplicates --project=default",
+        "playwright:api": "npx playwright test --grep @api --project=default",
+        "playwright:ui": "npx playwright test --grep @ui --workers=1 --project=chromium",
         "playwright:regression": "npx playwright test --grep @regression",
+        "python:cipher": "python testCases/cipher/Cipher.py",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "prepare": "husky"

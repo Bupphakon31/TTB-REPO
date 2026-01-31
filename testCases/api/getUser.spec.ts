@@ -1,8 +1,8 @@
-import { ENV } from "../../../globalVariables";
+import { ENV } from "@/globalVariables";
 import { test } from "@playwright/test";
-import { onCommonFunctions } from "../../../support/services/common";
-import { onFileExtensionUtil } from "../../../support/utils/fileExtensionUtil";
-import { onGetUser } from "../../../support/services/getUser";
+import { onCommonFunctions } from "@support/services/common";
+import { onFileExtensionUtil } from "@support/utils/fileExtensionUtil";
+import { onGetUser } from "@support/services/getUser";
 
 test.describe("Get User By Id", () => {
     let response: Record<string, any> = {};
@@ -22,7 +22,7 @@ test.describe("Get User By Id", () => {
     });
 
     test(
-        "GET: [/api/users] response [failed] when not found user",
+        "GET: [/api/users] response [failed] when get user profile but user not found",
         { tag: ["@medium", "@regression", "@api"] },
         async () => {
             await test.step("Call Get User API with user id not exist", async () => {
@@ -41,7 +41,7 @@ test.describe("Get User By Id", () => {
     );
 
     test(
-        "GET: [/api/users] response [success] when found user success",
+        "GET: [/api/users] response [success] when get user profile success",
         { tag: ["@medium", "@regression", "@api"] },
         async () => {
             await test.step("Call Get User API with user id is exist", async () => {

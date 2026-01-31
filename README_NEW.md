@@ -38,6 +38,7 @@ Environment variables are stored in `configs/.env`:
 ```env
 ENV_URL=https://reqres.in
 V1_USER=/api/users
+V1_USER_ID=/api/users
 ```
 
 ## Running Tests
